@@ -1,15 +1,34 @@
 import React from 'react';
-import './App.css';
+import { createUseStyles } from 'react-jss';
+import ConnectMindanao from './components/ConnectMindanao';
+import Counter from './components/Counter';
 
-function App() {
+const useStyles = createUseStyles({
+  app: {
+    background: `url('/images/bg.png')`,
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed',
+    backgroundSize: 'cover',
+    textAlign: 'center',
+    minHeight: '100vh',
+  },
+  spacing: {
+    height: '10vh',
+  },
+  counter: {
+    marginBottom: '5vw'
+  }
+});
+
+const App = () => {
+  const classes = useStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="https://ci4.googleusercontent.com/proxy/Y32pXeJaawNK5_G-nvSHnP_J-q3y8pM0Pqizw2r0gnUb9OecvKGG13a80oHgiDMRZVMXrEu8vhVLsoGA90eVWhazLZlH5Yop5A=s0-d-e1-ft#https://samahan-cdn.imfast.io/samahan_logo_colored.png" className="App-logo" alt="logo" />
-        <p>
-          Hello TSO!
-        </p>
-      </header>
+    <div className={classes.app}>
+      <div className={classes.spacing} />
+      <Counter className={classes.counter} />
+      <ConnectMindanao />
     </div>
   );
 }
