@@ -8,7 +8,7 @@ const useStyles = createUseStyles({
     width: '50vw',
     margin: 'auto',
     borderRadius: '10px',
-    padding: 20
+    padding: '1vw'
   },
   mainCounter: {
     color: 'white',
@@ -21,6 +21,19 @@ const useStyles = createUseStyles({
     color: '#73D8F1',
     fontSize: '1.5vw',
     fontFamily: 'Montserrat'
+  },
+  '@media (max-width: 1024px)': {
+    container: {
+      width: '80vw',
+      padding: '2vw'
+    },
+    mainCounter: {
+      fontSize: '8vw',
+      letterSpacing: '1.3vw',
+    },
+    subtitle: {
+      fontSize: '2vw',
+    }
   }
 });
 

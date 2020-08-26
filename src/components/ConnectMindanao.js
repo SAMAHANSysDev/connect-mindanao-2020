@@ -7,7 +7,18 @@ const useStyles = createUseStyles({
       transform: 'translatey(0px)'
     },
     '50%': {
-      transform: 'translatey(-10px)'
+      transform: 'translatey(-0.5vw)'
+    },
+    '100%': {
+      transform: 'translatey(0px)'
+    }
+  },
+  '@keyframes floatmobile': {
+    '0%': {
+      transform: 'translatey(0px)'
+    },
+    '50%': {
+      transform: 'translatey(-1vw)'
     },
     '100%': {
       transform: 'translatey(0px)'
@@ -113,6 +124,98 @@ const useStyles = createUseStyles({
     fontSize: '1.5vw',
     fontWeight: 600,
     letterSpacing: '1.3vw',
+  },
+  '@media (max-width: 1024px)': {
+    image1: {
+      animation: '$floatmobile 6s ease-in-out infinite',
+      height: '10vw',
+      margin: '0.5vw',
+      pointerEvents: 'none'
+    },
+    image2: {
+      animation: '$floatmobile 7s ease-in-out infinite',
+      height: '10vw',
+      margin: '0.5vw',
+      pointerEvents: 'none'
+    },
+    image3: {
+      animation: '$floatmobile 5s ease-in-out infinite',
+      height: '10vw',
+      margin: '0.5vw',
+      pointerEvents: 'none'
+    },
+    image4: {
+      animation: '$floatmobile 4s ease-in-out infinite',
+      height: '10vw',
+      margin: '0.5vw',
+      pointerEvents: 'none'
+    },
+    image5: {
+      animation: '$floatmobile 8s ease-in-out infinite',
+      height: '10vw',
+      margin: '0.5vw',
+      pointerEvents: 'none'
+    },
+    image6: {
+      animation: '$floatmobile 9s ease-in-out infinite',
+      height: '10vw',
+      margin: '0.5vw',
+      pointerEvents: 'none'
+    },
+    image7: {
+      animation: '$floatmobile 6.5s ease-in-out infinite',
+      height: '10vw',
+      margin: '0.5vw',
+      pointerEvents: 'none'
+    },
+    image8: {
+      animation: '$floatmobile 7.4s ease-in-out infinite',
+      height: '10vw',
+      margin: '0.5vw',
+      pointerEvents: 'none'
+    },
+    image9: {
+      animation: '$floatmobile 5.5s ease-in-out infinite',
+      height: '10vw',
+      margin: '0.5vw',
+      pointerEvents: 'none'
+    },
+    image10: {
+      animation: '$floatmobile 5.8s ease-in-out infinite',
+      height: '10vw',
+      margin: '0.5vw',
+      pointerEvents: 'none'
+    },
+    image11: {
+      animation: '$floatmobile 6.7s ease-in-out infinite',
+      height: '10vw',
+      margin: '0.5vw',
+      pointerEvents: 'none'
+    },
+    image12: {
+      animation: '$floatmobile 8.6s ease-in-out infinite',
+      height: '10vw',
+      margin: '0.5vw',
+      pointerEvents: 'none'
+    },
+    image13: {
+      animation: '$floatmobile 8.2s ease-in-out infinite',
+      height: '10vw',
+      margin: '0.5vw',
+      pointerEvents: 'none'
+    },
+    image14: {
+      animation: '$floatmobile 4.2s ease-in-out infinite',
+      height: '10vw',
+      margin: '0.5vw',
+      pointerEvents: 'none'
+    },
+    image15: {
+      animation: '$floatmobile 6.2s ease-in-out infinite',
+      height: '10vw',
+      margin: '0.5vw',
+      pointerEvents: 'none'
+    }
   }
 });
 
