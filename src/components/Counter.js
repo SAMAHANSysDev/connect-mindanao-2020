@@ -22,7 +22,7 @@ const useStyles = createUseStyles({
     fontSize: '1.5vw',
     fontFamily: 'Montserrat'
   },
-  '@media (max-width: 1024px)': {
+  '@media (max-width: 992px)': {
     container: {
       width: '80vw',
       padding: '2vw'

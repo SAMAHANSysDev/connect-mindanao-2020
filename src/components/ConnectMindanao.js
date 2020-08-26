@@ -125,7 +125,7 @@ const useStyles = createUseStyles({
     fontWeight: 600,
     letterSpacing: '1.3vw',
   },
-  '@media (max-width: 1024px)': {
+  '@media (max-width: 992px)': {
     image1: {
       animation: '$floatmobile 6s ease-in-out infinite',
       height: '10vw',

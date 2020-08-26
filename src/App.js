@@ -3,7 +3,7 @@ import { createUseStyles } from 'react-jss';
 import ConnectMindanao from './components/ConnectMindanao';
 import Counter from './components/Counter';
 import Button from './components/Button';
-import { Container, Row, Col, Visible } from 'react-grid-system';
+import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
 
 const useStyles = createUseStyles({
   app: {
@@ -56,16 +56,21 @@ const App = () => {
       </Container>
       <Container style={{ marginTop: '10vw', width: '80%', minHeight: '30vw' }}>
         <Row>
+          <Hidden md lg xl xxl>
+            <Col sm={4} style={{ position: 'relative' }}>
+              <img style={{ width: '100%' }} src="images/ph-iso.png" alt="ph" />
+            </Col>
+          </Hidden>
           <Col sm={8}>
             <h1 style={{ color: 'white' }}>The Internet Situation in Mindanao</h1>
             <p>        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras velit, massa semper sodales facilisi orci leo, tristique. Sed faucibus elementum nulla massa venenatis. Commodo diam nulla morbi tortor, proin tristique non tempor, vel. Id donec sed in venenatis faucibus consectetur eu. Consectetur eget nunc nunc nec ultrices diam.
         Neque at enim malesuada tortor purus. Etiam pellentesque sagittis feugiat odio tortor ac dolor enim amet. Nisi viverra ultricies.</p>
           </Col>
+          <Visible md lg xl xxl>
             <Col sm={4} style={{ position: 'relative' }}>
-              <Visible md lg xl xxl>
-                <img style={{ position: 'absolute', width: '60vw', left: '-15vw', top: '-15vw' }} src="images/ph-iso.png" alt="ph" />
-              </Visible>
+              <img style={{ position: 'absolute', width: '60vw', left: '-15vw', top: '-15vw' }} src="images/ph-iso.png" alt="ph" />
             </Col>
+          </Visible>
         </Row>
       </Container>
     </div>
