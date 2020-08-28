@@ -15,7 +15,7 @@ const useStyles = createUseStyles({
     letterSpacing: '0.3vw',
     fontFamily: 'Montserrat',
     fontSize: '1.5rem',
-    transition: '0.2s',
+    transition: '0.1s',
     mozBoxShadow: `
       inset 0 0 0.1vw #BDF2FF,
       0 0 3vw 0.1vw #73D8F1

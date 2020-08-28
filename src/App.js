@@ -6,6 +6,8 @@ import Button from './components/Button';
 import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
 import TextField from './components/TextField';
 import Checkbox from './components/Checkbox';
+import Rocket from './components/Rocket';
+import Signal from './components/Signal';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
@@ -95,13 +97,13 @@ const App = () => {
         <Counter className={classes.counter} />
         <ConnectMindanao className={classes.centerAlign} />
         <Button className={classes.button} onClick={executeScroll}>Learn more</Button>
-        <div ref={firstInfoRef} />
         <Container style={{ marginTop: '10vw', width: '80%' }}>
           <Row>
             <Col sm={4}>
               <img style={{ pointerEvents: 'none' }} src="images/ph-pink.png" alt="ph" width="100%" />
             </Col>
             <Col sm={8}>
+              <div ref={firstInfoRef} />
               <div className={classes.textContainer}>
                 <h1 style={{ color: 'white' }}>The Philipine Internet Situation</h1>
                 <p>Recent global speed tests showed that the Philippines has a fixed broadband download speed of <b>25.07</b> Megabits per second (Mbps), which is way lower than the global average of <b>81.46</b> Mbps. The Philippines also has a lower mobile download speed of <b>16.95</b> Mbps, compared to the global average of <b>34.51</b> Mbps</p>
@@ -149,7 +151,7 @@ const App = () => {
           <Row>
             <Hidden md lg xl xxl>
               <Col sm={4} style={{ position: 'relative' }}>
-                <img style={{ width: '100%', pointerEvents: 'none' }} src="images/ph-iso.png" alt="ph" />
+                <img style={{ width: '100%', pointerEvents: 'none' }} src="images/signal/satellite.png" alt="ph" />
               </Col>
             </Hidden>
             <Col sm={8} style={{ zIndex: 2 }}>
@@ -160,20 +162,20 @@ const App = () => {
             </Col>
             <Visible md lg xl xxl>
               <Col sm={4} style={{ position: 'relative' }}>
-                <img style={{ position: 'absolute', width: '60vw', left: '-15vw', top: '-15vw', pointerEvents: 'none' }} src="images/ph-iso.png" alt="ph" />
+                <Signal />
               </Col>
             </Visible>
           </Row>
         </Container>
 
         <div className={classes.pdf}>
-          Want to know more details? Download the complete pdf here
+          Want to know more details? View the complete document here.
         </div>
 
         <Container style={{ marginTop: '10vw', width: '80%' }}>
           <Row>
             <Col sm={6}>
-              <img src="images/ph-pink.png" style={{ pointerEvents: 'none' }} alt="ph" width="100%" />
+              <Rocket />
             </Col>
             <Col sm={6}>
               <h1 style={{ color: 'white' }}>Sign the Petition</h1>
