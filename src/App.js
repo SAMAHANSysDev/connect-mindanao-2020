@@ -183,7 +183,7 @@ const App = () => {
               <div className={classes.textContainer}>
                 <h1 style={{ color: 'white' }}>The Philipine Internet Situation</h1>
                 <p>Recent global speed tests showed that the Philippines has a fixed broadband download speed of <b>25.07</b> Megabits per second (Mbps), which is way lower than the global average of <b>81.46</b> Mbps. The Philippines also has a lower mobile download speed of <b>16.95</b> Mbps, compared to the global average of <b>34.51</b> Mbps</p>
-                <SmallButton className={classes.readMoreButton} onClick={() => { window.open('https://connectmindanao.imfast.io/documents/The%20Philippine%20Internet%20Situation.pdf', '_blank'); }} fullWidth>Read more</SmallButton>
+                <SmallButton className={classes.readMoreButton} onClick={() => { window.open('/documents/The%20Philippine%20Internet%20Situation.pdf', '_blank'); }} fullWidth>Read more</SmallButton>
               </div>
             </Col>
           </Row>
@@ -200,7 +200,7 @@ const App = () => {
               <div className={classes.textContainer}>
                 <h1 style={{ color: 'white' }}>The Internet Situation in Mindanao</h1>
                 <p>Although the Department of Information and Communications Technology (DICT) has many plans and has spent millions in developing the country’s communication and information infrastructure, good internet connection in Mindanao exists mostly in the major cities such as Davao, Cagayan de Oro, Butuan, and General Santos. Beyond these cities, however, cell sites are sparse, and therefore, a good internet connection is hard to find.</p>
-                <SmallButton className={classes.readMoreButton} onClick={() => { window.open('https://connectmindanao.imfast.io/documents/The%20Internet%20Situation%20in%20Mindanao.pdf', '_blank'); }} fullWidth>Read more</SmallButton>
+                <SmallButton className={classes.readMoreButton} onClick={() => { window.open('/documents/The%20Internet%20Situation%20in%20Mindanao.pdf', '_blank'); }} fullWidth>Read more</SmallButton>
               </div>
             </Col>
             <Visible md lg xl xxl>
@@ -227,7 +227,7 @@ const App = () => {
               <div className={classes.textContainer}>
                 <h1 style={{ color: 'white' }}>Legislations and Challenges</h1>
                 <p>While broadband satellite technology looks promising, key policies and regulatory obstacles to using the technology are still present. The process of acquiring a telecommunications franchise from the Philippine Congress is expensive and time-consuming, hindering the entry of competitors into the industry.</p>
-                <SmallButton className={classes.readMoreButton} onClick={() => { window.open('https://connectmindanao.imfast.io/documents/Legislations%20and%20Challenges.pdf', '_blank'); }} fullWidth>Read more</SmallButton>
+                <SmallButton className={classes.readMoreButton} onClick={() => { window.open('/documents/Legislations%20and%20Challenges.pdf', '_blank'); }} fullWidth>Read more</SmallButton>
               </div>
             </Col>
           </Row>
@@ -244,7 +244,7 @@ const App = () => {
               <div className={classes.textContainer}>
                 <h1 style={{ color: 'white' }}>Satellite Internet</h1>
                 <p>Satellite internet is a reliable way of getting internet access to remote places in the Philippines. As an archipelagic country, it is surprising that the Philippines is not taking advantage of satellite technology as much as its Asian neighbors. Countries such as Indonesia, Malaysia, and Thailand have launched several satellites of their own. Additionally, satellite internet is many times faster than dial-up internet, which might be a good alternative for people in remote areas.</p>
-                <SmallButton className={classes.readMoreButton} onClick={() => { window.open('https://connectmindanao.imfast.io/documents/About%20Satellite%20Internet.pdf', '_blank'); }} fullWidth>Read more</SmallButton>
+                <SmallButton className={classes.readMoreButton} onClick={() => { window.open('/documents/About%20Satellite%20Internet.pdf', '_blank'); }} fullWidth>Read more</SmallButton>
               </div>
             </Col>
             <Visible md lg xl xxl>
