@@ -1,10 +1,12 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 
+import { cdnURL } from '../utils/constants';
+
 const useStyles = createUseStyles({
   container: {
     position: 'relative',
-    backgroundImage: 'url(/images/rocket/rocket.png)',
+    backgroundImage: `url(${cdnURL}/rocket/rocket.png)`,
     backgroundSize: 'contain',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -17,7 +19,7 @@ const useStyles = createUseStyles({
     left: '1%',
     bottom: '-30%',
     position: 'absolute',
-    backgroundImage: 'url(/images/rocket/main.png)',
+    backgroundImage: `url(${cdnURL}/rocket/main.png)`,
     backgroundSize: 'contain',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -30,7 +32,7 @@ const useStyles = createUseStyles({
     left: '-15%',
     bottom: '-13%',
     position: 'absolute',
-    backgroundImage: 'url(/images/rocket/left.png)',
+    backgroundImage: `url(${cdnURL}/rocket/left.png)`,
     backgroundSize: 'contain',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -43,7 +45,7 @@ const useStyles = createUseStyles({
     right: '-16%',
     bottom: '-13%',
     position: 'absolute',
-    backgroundImage: 'url(/images/rocket/right.png)',
+    backgroundImage: `url(${cdnURL}/rocket/right.png)`,
     backgroundSize: 'contain',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',

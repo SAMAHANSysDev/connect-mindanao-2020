@@ -1,13 +1,15 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 
+import { cdnURL } from '../utils/constants';
+
 const useStyles = createUseStyles({
   astronaut: {
     animation: '$float 5s infinite',
     left: '-30%',
     top: '-50%',
     position: 'absolute',
-    backgroundImage: 'url(/images/bg/astronaut.png)',
+    backgroundImage: `url(${cdnURL}/bg/astronaut.png)`,
     backgroundSize: 'contain',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',

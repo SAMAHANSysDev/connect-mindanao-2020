@@ -8,12 +8,21 @@ import TextField from './components/TextField';
 import Checkbox from './components/Checkbox';
 import Rocket from './components/Rocket';
 import Signal from './components/Signal';
+
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
+import { cdnURL } from './utils/constants';
+
 const useStyles = createUseStyles({
   app: {
-    background: `url('/images/bg_fill.png')`,
+    background: `url('${cdnURL}/bg_fill.png')`,
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundAttachment: 'fixed',
@@ -43,7 +52,7 @@ const useStyles = createUseStyles({
     left: 0
   },
   stars: {
-    background: `url('/images/stars.png')`,
+    background: `url('${cdnURL}/stars.png')`,
     backgroundSize: 'cover',
     height: '100%'
   },
@@ -62,16 +71,19 @@ const useStyles = createUseStyles({
     textAlign: 'center',
     marginTop: '5vw'
   },
-  pdf: {
+  readMoreButton: {
+    marginTop: '4vw',
+  },
+  footer: {
     width: '100%',
-    backgroundColor: 'rgba(0,0,0,0.8)',
     padding: '2vw',
     textAlign: 'center',
-    fontSize: '1.5rem'
+    fontWeight: 400,
+    fontSize: '0.8rem'
   },
   textContainer: {
     backgroundColor: 'rgba(0,0,0,0.6)',
-    padding: '1.5vw',
+    padding: 'calc(50px + 1vw)',
     borderRadius: '1vw'
   },
   redPlanet: {
@@ -109,11 +121,30 @@ const useStyles = createUseStyles({
     width: '100vw',
     pointerEvents: 'none'
   },
+  samahanLogo: {
+    position: 'absolute',
+    left: '10vw',
+    top: '5vw',
+    width: '5vw',
+    pointerEvents: 'none'
+  }
 });
 
 const scrollToRef = (ref) => ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
 const App = () => {
+
+  const [openPrivacyPolicy, setOpenPrivacyPolicy] = React.useState(false);
+
+  const handleOpenPrivacy = (e) => {
+    e.preventDefault();
+    setOpenPrivacyPolicy(true);
+  };
+
+  const handleClosePrivacy = () => {
+    setOpenPrivacyPolicy(false);
+  };
+
   const classes = useStyles();
   const firstInfoRef = React.useRef(null);
   const executeScroll = () => {
@@ -129,78 +160,83 @@ const App = () => {
         <div className={classes.stars} />
       </div>
       <div className={classes.contentLayer}>
+        <img src={`${cdnURL}/moreinmotion.svg`} alt="samahan" className={classes.samahanLogo} />
         <div className={classes.spacing} />
         <Counter className={classes.counter} />
         <ConnectMindanao className={classes.centerAlign} />
         <Button className={classes.button} onClick={executeScroll}>Learn more</Button>
         <Visible md lg xl xxl>
-          <img src="/images/bg/redplanet.png" alt="planet" className={classes.redPlanet} />
+          <img src={`${cdnURL}/bg/redplanet.png`} alt="planet" className={classes.redPlanet} />
         </Visible>
-        <img src="/images/bg/earth.png" alt="planet" className={classes.earth} />
-        <img src="/images/bg/wowplanet.png" alt="planet" className={classes.wowPlanet} />
+        <img src={`${cdnURL}/bg/earth.png`} alt="planet" className={classes.earth} />
+        <img src={`${cdnURL}/bg/wowplanet.png`} alt="planet" className={classes.wowPlanet} />
         <Container style={{ marginTop: '10vw', width: '80%', position: 'relative' }}>
-          <img src="/images/bg/comet.png" alt="comet" className={classes.comet} />
+          <img src={`${cdnURL}/bg/comet.png`} alt="comet" className={classes.comet} />
           <Row>
             <Col sm={4}>
-              <img style={{ pointerEvents: 'none' }} src="images/ph-pink.png" alt="ph" width="100%" />
+              <img style={{ pointerEvents: 'none' }} src={`${cdnURL}/ph-pink.png`} alt="ph" width="100%" />
             </Col>
             <Col sm={8}>
               <div ref={firstInfoRef} />
               <div className={classes.textContainer}>
                 <h1 style={{ color: 'white' }}>The Philipine Internet Situation</h1>
                 <p>Recent global speed tests showed that the Philippines has a fixed broadband download speed of <b>25.07</b> Megabits per second (Mbps), which is way lower than the global average of <b>81.46</b> Mbps. The Philippines also has a lower mobile download speed of <b>16.95</b> Mbps, compared to the global average of <b>34.51</b> Mbps</p>
+                <Button className={classes.readMoreButton} onClick={() => {}} fullWidth>Read more</Button>
               </div>
             </Col>
           </Row>
         </Container>
 
-        <Container style={{ marginTop: '10vw', width: '80%', minHeight: '30vw', position: 'relative' }}>
-          <img src="/images/bg/rocks.png" alt="asteroid" className={classes.asteroid} />
+        <Container style={{ marginTop: '15vw', width: '80%', minHeight: '30vw', position: 'relative' }}>
+          <img src={`${cdnURL}/bg/rocks.png`} alt="asteroid" className={classes.asteroid} />
           <Row>
             <Hidden md lg xl xxl>
               <Col sm={4} style={{ position: 'relative' }}>
-                <img style={{ width: '100%', pointerEvents: 'none' }} src="images/ph-iso.png" alt="ph" />
+                <img style={{ width: '100%', pointerEvents: 'none' }} src={`${cdnURL}/ph-iso.png`} alt="ph" />
               </Col>
             </Hidden>
             <Col sm={8} style={{ zIndex: 2 }}>
               <div className={classes.textContainer}>
                 <h1 style={{ color: 'white' }}>The Internet Situation in Mindanao</h1>
                 <p>Although the Department of Information and Communications Technology (DICT) has many plans and has spent millions in developing the country’s communication and information infrastructure, good internet connection in Mindanao exists mostly in the major cities such as Davao, Cagayan de Oro, Butuan, and General Santos. Beyond these cities, however, cell sites are sparse, and therefore, a good internet connection is hard to find.</p>
+                <Button className={classes.readMoreButton} onClick={() => {}} fullWidth>Read more</Button>
               </div>
             </Col>
             <Visible md lg xl xxl>
               <Col sm={4} style={{ position: 'relative' }}>
-                <img style={{ position: 'absolute', width: '60vw', left: '-15vw', top: '-15vw', pointerEvents: 'none' }} src="images/ph-iso.png" alt="ph" />
+                <img style={{ position: 'absolute', width: '60vw', left: '-15vw', top: '-15vw', pointerEvents: 'none' }} src={`${cdnURL}/ph-iso.png`} alt="ph" />
               </Col>
             </Visible>
           </Row>
         </Container>
 
-        <Container style={{ marginTop: '10vw', width: '80%' }}>
+        <Container style={{ marginTop: '15vw', width: '80%' }}>
           <Row>
             <Col sm={4}>
-              <img src="images/laptop.png" style={{ pointerEvents: 'none' }} alt="ph" width="100%" />
+              <img src={`${cdnURL}/laptop.png`} style={{ pointerEvents: 'none' }} alt="ph" width="100%" />
             </Col>
             <Col sm={8}>
               <div className={classes.textContainer}>
                 <h1 style={{ color: 'white' }}>Legislations and Challenges</h1>
                 <p>While broadband satellite technology looks promising, key policies and regulatory obstacles to using the technology are still present. The process of acquiring a telecommunications franchise from the Philippine Congress is expensive and time-consuming, hindering the entry of competitors into the industry.</p>
+                <Button className={classes.readMoreButton} onClick={() => {}} fullWidth>Read more</Button>
               </div>
             </Col>
           </Row>
         </Container>
 
-        <Container style={{ marginTop: '10vw', width: '80%', minHeight: '30vw' }}>
+        <Container style={{ marginTop: '20vw', width: '80%', minHeight: '30vw' }}>
           <Row>
             <Hidden md lg xl xxl>
               <Col sm={4} style={{ position: 'relative' }}>
-                <img style={{ width: '100%', pointerEvents: 'none' }} src="images/signal/satellite.png" alt="ph" />
+                <img style={{ width: '100%', pointerEvents: 'none' }} src={`${cdnURL}/signal/satellite.png`} alt="ph" />
               </Col>
             </Hidden>
             <Col sm={8} style={{ zIndex: 2 }}>
               <div className={classes.textContainer}>
                 <h1 style={{ color: 'white' }}>Satellite Internet</h1>
                 <p>Satellite internet is a reliable way of getting internet access to remote places in the Philippines. As an archipelagic country, it is surprising that the Philippines is not taking advantage of satellite technology as much as its Asian neighbors. Countries such as Indonesia, Malaysia, and Thailand have launched several satellites of their own. Additionally, satellite internet is many times faster than dial-up internet, which might be a good alternative for people in remote areas.</p>
+                <Button className={classes.readMoreButton} onClick={() => {}} fullWidth>Read more</Button>
               </div>
             </Col>
             <Visible md lg xl xxl>
@@ -211,11 +247,7 @@ const App = () => {
           </Row>
         </Container>
 
-        <div className={classes.pdf}>
-          Want to know more details? View the complete document here.
-        </div>
-
-        <Container style={{ marginTop: '10vw', width: '80%' }}>
+        <Container style={{ marginTop: '15vw', width: '80%' }}>
           <Row>
             <Col sm={6}>
               <Rocket />
@@ -232,17 +264,11 @@ const App = () => {
                   fullWidth
                 />
                 <TextField
-                  label="Address"
-                  fullWidth
-                />
-                <TextField
                   label="Email"
                   fullWidth
                 />
-                <TextField
-                  label="Contact Number"
-                  fullWidth
-                />
+                <br />
+                <a onClick={handleOpenPrivacy} href="/">Privacy Policy</a>
                 <FormControlLabel
                   control={
                     <Checkbox onChange={() => {}} name="checkedG" />
@@ -255,7 +281,33 @@ const App = () => {
           </Row>
         </Container>
 
+        <Dialog
+          open={openPrivacyPolicy}
+          onClose={handleClosePrivacy}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{"Privacy Policy"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              <p>Under the protection of the Republic Act 10173, also known as the Data Privacy Act, the information that you will be submitting in this form will be used for the Signature Drive of Connect Mindanao: Internet Para Sa Lahat. The following information will be asked from you: 1) Name, and  2) E-mail</p>
+              <p>The information collected will only be used to quantify the number of people who are in support of this project. Moreover, only the number of respondents in this form will be used for the publicity materials of Connect Mindanao. The name and e-mail are collected for the purpose of reducing multiple submissions from the same respondent. </p>
+              <p>Should you have any concern, you may send an email to samahan@addu.edu.ph with the subject, Connect Mindanao | Signature Drive .</p>
+              <p>By submitting this form, you have read, understood and agreed to the terms indicated above.</p>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClosePrivacy} color="primary" autoFocus>
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
+
         <div className={classes.spacing} />
+        <div className={classes.footer}>
+          Copyright 2020 SAMAHAN Central Board | Developed by SAMAHAN Creative Team and SAMAHAN System Development<br/>
+          Web Design by <a href="https://twitter.com/sonroyaalmerol" target="_blank" rel="noopener noreferrer">Son Roy Almerol</a> and <a href="https://twitter.com/jeyowthreeshwa" target="_blank" rel="noopener noreferrer">Joeshua Dequiña</a>
+        </div>
       </div>
     </div>
   );

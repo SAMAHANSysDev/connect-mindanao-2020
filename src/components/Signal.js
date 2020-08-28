@@ -1,6 +1,8 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 
+import { cdnURL } from '../utils/constants';
+
 const useStyles = createUseStyles({
   container: {
     position: 'relative',
@@ -12,7 +14,7 @@ const useStyles = createUseStyles({
     right: '-30%',
     bottom: '-80%',
     position: 'absolute',
-    backgroundImage: 'url(/images/signal/towers.png)',
+    backgroundImage: `url(${cdnURL}/signal/towers.png)`,
     backgroundSize: 'contain',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -23,7 +25,7 @@ const useStyles = createUseStyles({
     left: '-70%',
     top: '-150%',
     position: 'absolute',
-    backgroundImage: 'url(/images/signal/satellite.png)',
+    backgroundImage: `url(${cdnURL}/signal/satellite.png)`,
     backgroundSize: 'contain',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -35,7 +37,7 @@ const useStyles = createUseStyles({
     left: '-30%',
     top: '-40%',
     position: 'absolute',
-    backgroundImage: 'url(/images/signal/1.png)',
+    backgroundImage: `url(${cdnURL}/signal/1.png)`,
     backgroundSize: 'contain',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -48,7 +50,7 @@ const useStyles = createUseStyles({
     left: '-20%',
     top: '-45%',
     position: 'absolute',
-    backgroundImage: 'url(/images/signal/2.png)',
+    backgroundImage: `url(${cdnURL}/signal/2.png)`,
     backgroundSize: 'contain',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -61,7 +63,7 @@ const useStyles = createUseStyles({
     left: '-10%',
     top: '-50%',
     position: 'absolute',
-    backgroundImage: 'url(/images/signal/3.png)',
+    backgroundImage: `url(${cdnURL}/signal/3.png)`,
     backgroundSize: 'contain',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',

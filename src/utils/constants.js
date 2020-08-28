@@ -1,0 +1,1 @@
+export const cdnURL = 'https://connectmindanao.imfast.io';

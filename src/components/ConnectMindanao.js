@@ -3,6 +3,8 @@ import { createUseStyles } from 'react-jss';
 import Astronaut from './Astronaut';
 import { Visible } from 'react-grid-system';
 
+import { cdnURL } from '../utils/constants';
+
 const useStyles = createUseStyles({
   '@keyframes float': {
     '0%': {
@@ -229,22 +231,22 @@ const Component = ({ className }) => {
       <Visible md lg xl xxl>
         <Astronaut />
       </Visible>
-      <img className={classes.image1} src="/images/connectMindanao/1c.png" alt="C" />
-      <img className={classes.image2} src="/images/connectMindanao/2o.png" alt="o" />
-      <img className={classes.image3} src="/images/connectMindanao/3n.png" alt="n" />
-      <img className={classes.image4} src="/images/connectMindanao/4n.png" alt="n" />
-      <img className={classes.image5} src="/images/connectMindanao/5e.png" alt="e" />
-      <img className={classes.image6} src="/images/connectMindanao/6c.png" alt="c" />
-      <img className={classes.image7} src="/images/connectMindanao/7t.png" alt="t" />
+      <img className={classes.image1} src={`${cdnURL}/connectMindanao/1c.png`} alt="C" />
+      <img className={classes.image2} src={`${cdnURL}/connectMindanao/2o.png`} alt="o" />
+      <img className={classes.image3} src={`${cdnURL}/connectMindanao/3n.png`} alt="n" />
+      <img className={classes.image4} src={`${cdnURL}/connectMindanao/4n.png`} alt="n" />
+      <img className={classes.image5} src={`${cdnURL}/connectMindanao/5e.png`} alt="e" />
+      <img className={classes.image6} src={`${cdnURL}/connectMindanao/6c.png`} alt="c" />
+      <img className={classes.image7} src={`${cdnURL}/connectMindanao/7t.png`} alt="t" />
       <div className={classes.newline} />
-      <img className={classes.image8} src="/images/connectMindanao/8m.png" alt="m" />
-      <img className={classes.image9} src="/images/connectMindanao/9i.png" alt="i" />
-      <img className={classes.image10} src="/images/connectMindanao/10n.png" alt="n" />
-      <img className={classes.image11} src="/images/connectMindanao/11d.png" alt="d" />
-      <img className={classes.image12} src="/images/connectMindanao/12a.png" alt="a" />
-      <img className={classes.image13} src="/images/connectMindanao/13n.png" alt="n" />
-      <img className={classes.image14} src="/images/connectMindanao/14a.png" alt="a" />
-      <img className={classes.image15} src="/images/connectMindanao/15o.png" alt="o" />
+      <img className={classes.image8} src={`${cdnURL}/connectMindanao/8m.png`} alt="m" />
+      <img className={classes.image9} src={`${cdnURL}/connectMindanao/9i.png`} alt="i" />
+      <img className={classes.image10} src={`${cdnURL}/connectMindanao/10n.png`} alt="n" />
+      <img className={classes.image11} src={`${cdnURL}/connectMindanao/11d.png`} alt="d" />
+      <img className={classes.image12} src={`${cdnURL}/connectMindanao/12a.png`} alt="a" />
+      <img className={classes.image13} src={`${cdnURL}/connectMindanao/13n.png`} alt="n" />
+      <img className={classes.image14} src={`${cdnURL}/connectMindanao/14a.png`} alt="a" />
+      <img className={classes.image15} src={`${cdnURL}/connectMindanao/15o.png`} alt="o" />
       <div className={classes.subtitle}>
         INTERNET PARA SA LAHAT
       </div>
