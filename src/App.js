@@ -84,7 +84,7 @@ const useStyles = createUseStyles({
   },
   textContainer: {
     backgroundColor: 'rgba(0,0,0,0.6)',
-    padding: 'calc(50px + 1vw)',
+    padding: 'calc(20px + 1vw)',
     borderRadius: '1vw'
   },
   redPlanet: {
