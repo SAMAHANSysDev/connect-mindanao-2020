@@ -13,7 +13,7 @@ const useStyles = createUseStyles({
     paddingTop: '66.64%',
   },
   middle: {
-    animation: '$thruster 0.15s infinite',
+    animation: '$thruster 0.075s infinite',
     left: '1%',
     bottom: '-30%',
     position: 'absolute',
@@ -26,7 +26,7 @@ const useStyles = createUseStyles({
     zIndex: '-1',
   },
   left: {
-    animation: '$thruster 0.1s infinite',
+    animation: '$thruster 0.05s infinite',
     left: '-15%',
     bottom: '-13%',
     position: 'absolute',
@@ -39,7 +39,7 @@ const useStyles = createUseStyles({
     zIndex: '-1',
   },
   right: {
-    animation: '$thruster 0.1s infinite',
+    animation: '$thruster 0.05s infinite',
     right: '-16%',
     bottom: '-13%',
     position: 'absolute',

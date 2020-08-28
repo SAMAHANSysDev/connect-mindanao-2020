@@ -1,5 +1,7 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
+import Astronaut from './Astronaut';
+import { Visible } from 'react-grid-system';
 
 const useStyles = createUseStyles({
   '@keyframes float': {
@@ -224,6 +226,9 @@ const Component = ({ className }) => {
 
   return (
     <div className={className}>
+      <Visible md lg xl xxl>
+        <Astronaut />
+      </Visible>
       <img className={classes.image1} src="/images/connectMindanao/1c.png" alt="C" />
       <img className={classes.image2} src="/images/connectMindanao/2o.png" alt="o" />
       <img className={classes.image3} src="/images/connectMindanao/3n.png" alt="n" />

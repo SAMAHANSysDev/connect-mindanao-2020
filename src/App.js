@@ -48,6 +48,7 @@ const useStyles = createUseStyles({
     height: '100%'
   },
   centerAlign: {
+    position: 'relative',
     textAlign: 'center',
   },
   spacing: {
@@ -69,10 +70,45 @@ const useStyles = createUseStyles({
     fontSize: '1.5rem'
   },
   textContainer: {
-    backgroundColor: 'rgba(0,0,0,0.4)',
+    backgroundColor: 'rgba(0,0,0,0.6)',
     padding: '1.5vw',
     borderRadius: '1vw'
-  }
+  },
+  redPlanet: {
+    position: 'absolute',
+    left: '10vw',
+    top: '40vw',
+    width: '15vw',
+    pointerEvents: 'none'
+  },
+  earth: {
+    position: 'absolute',
+    right: '-20vw',
+    top: '20vw',
+    width: '50vw',
+    pointerEvents: 'none'
+  },
+  wowPlanet: {
+    position: 'absolute',
+    left: '-15vw',
+    top: '10vw',
+    width: '30vw',
+    pointerEvents: 'none'
+  },
+  comet: {
+    position: 'absolute',
+    right: '10vw',
+    top: '10vw',
+    width: '30vw',
+    pointerEvents: 'none'
+  },
+  asteroid: {
+    position: 'absolute',
+    left: '-55vw',
+    top: '-20vw',
+    width: '100vw',
+    pointerEvents: 'none'
+  },
 });
 
 const scrollToRef = (ref) => ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -97,7 +133,13 @@ const App = () => {
         <Counter className={classes.counter} />
         <ConnectMindanao className={classes.centerAlign} />
         <Button className={classes.button} onClick={executeScroll}>Learn more</Button>
-        <Container style={{ marginTop: '10vw', width: '80%' }}>
+        <Visible md lg xl xxl>
+          <img src="/images/bg/redplanet.png" alt="planet" className={classes.redPlanet} />
+        </Visible>
+        <img src="/images/bg/earth.png" alt="planet" className={classes.earth} />
+        <img src="/images/bg/wowplanet.png" alt="planet" className={classes.wowPlanet} />
+        <Container style={{ marginTop: '10vw', width: '80%', position: 'relative' }}>
+          <img src="/images/bg/comet.png" alt="comet" className={classes.comet} />
           <Row>
             <Col sm={4}>
               <img style={{ pointerEvents: 'none' }} src="images/ph-pink.png" alt="ph" width="100%" />
@@ -112,7 +154,8 @@ const App = () => {
           </Row>
         </Container>
 
-        <Container style={{ marginTop: '10vw', width: '80%', minHeight: '30vw' }}>
+        <Container style={{ marginTop: '10vw', width: '80%', minHeight: '30vw', position: 'relative' }}>
+          <img src="/images/bg/rocks.png" alt="asteroid" className={classes.asteroid} />
           <Row>
             <Hidden md lg xl xxl>
               <Col sm={4} style={{ position: 'relative' }}>
