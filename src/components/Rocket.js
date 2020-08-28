@@ -6,30 +6,33 @@ import { cdnURL } from '../utils/constants';
 const useStyles = createUseStyles({
   container: {
     position: 'relative',
-    backgroundImage: `url(${cdnURL}/rocket/rocket.png)`,
-    backgroundSize: 'contain',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
+    height: 0,
     width: '100%',
-    height: '100%'
+    paddingTop: '66.67%'
+  },
+  rocket: {
+    width: '20vw',
+    top: 0,
+    left: 0,
+    position: 'absolute'
   },
   middle: {
     animation: '$thruster 0.075s infinite',
-    left: '1%',
-    bottom: '-30%',
+    left: '-18%',
+    bottom: '-110%',
     position: 'absolute',
     backgroundImage: `url(${cdnURL}/rocket/main.png)`,
     backgroundSize: 'contain',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     width: '100%',
-    height: '40%',
+    height: '60%',
     zIndex: '-1',
   },
   left: {
     animation: '$thruster 0.05s infinite',
-    left: '-25%',
-    bottom: '-13%',
+    left: '-42%',
+    bottom: '-80%',
     position: 'absolute',
     backgroundImage: `url(${cdnURL}/rocket/left.png)`,
     backgroundSize: 'contain',
@@ -41,8 +44,8 @@ const useStyles = createUseStyles({
   },
   right: {
     animation: '$thruster 0.05s infinite',
-    right: '-26%',
-    bottom: '-13%',
+    right: '-8%',
+    bottom: '-80%',
     position: 'absolute',
     backgroundImage: `url(${cdnURL}/rocket/right.png)`,
     backgroundSize: 'contain',
@@ -70,6 +73,7 @@ const Rocket = (props) => {
 
   return (
     <div className={classes.container}>
+      <img src={`${cdnURL}/rocket/rocket.png`} className={classes.rocket} alt="rocket" />
       <div className={classes.middle} />
       <div className={classes.left} />
       <div className={classes.right} />

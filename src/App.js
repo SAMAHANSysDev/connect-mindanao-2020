@@ -257,9 +257,16 @@ const App = () => {
 
         <Container style={{ marginTop: '15vw', width: '80%', marginBottom: '5vw' }}>
           <Row>
-            <Col sm={5}>
-              <Rocket />
-            </Col>
+            <Hidden md lg xl xxl>
+              <Col sm={5}>
+                <img src={`${cdnURL}/rocket/rocket.png`} style={{ pointerEvents: 'none',  display: 'block', marginLeft: 'auto', marginRight: 'auto', width: '30%' }} alt="rocket" width="50%" />
+              </Col>
+            </Hidden>
+            <Visible md lg xl xxl>
+              <Col sm={5}>
+                <Rocket />
+              </Col>
+            </Visible>
             <Col sm={7}>
               <h1 style={{ color: 'white' }}>Sign the Petition</h1>
               <FormGroup>
