@@ -14,7 +14,8 @@ const useStyles = createUseStyles({
     width: '20vw',
     top: 0,
     left: 0,
-    position: 'absolute'
+    position: 'absolute',
+    pointerEvents: 'none'
   },
   middle: {
     animation: '$thruster 0.075s infinite',
