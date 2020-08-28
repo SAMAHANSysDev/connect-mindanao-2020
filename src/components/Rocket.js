@@ -11,8 +11,7 @@ const useStyles = createUseStyles({
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     width: '100%',
-    height: 0,
-    paddingTop: '66.64%',
+    height: '100%'
   },
   middle: {
     animation: '$thruster 0.075s infinite',
@@ -29,7 +28,7 @@ const useStyles = createUseStyles({
   },
   left: {
     animation: '$thruster 0.05s infinite',
-    left: '-15%',
+    left: '-25%',
     bottom: '-13%',
     position: 'absolute',
     backgroundImage: `url(${cdnURL}/rocket/left.png)`,
@@ -42,7 +41,7 @@ const useStyles = createUseStyles({
   },
   right: {
     animation: '$thruster 0.05s infinite',
-    right: '-16%',
+    right: '-26%',
     bottom: '-13%',
     position: 'absolute',
     backgroundImage: `url(${cdnURL}/rocket/right.png)`,

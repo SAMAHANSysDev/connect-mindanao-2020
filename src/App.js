@@ -255,7 +255,7 @@ const App = () => {
           </Row>
         </Container>
 
-        <Container style={{ marginTop: '15vw', width: '80%' }}>
+        <Container style={{ marginTop: '15vw', width: '80%', marginBottom: '5vw' }}>
           <Row>
             <Col sm={5}>
               <Rocket />
