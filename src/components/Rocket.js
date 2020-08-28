@@ -18,8 +18,8 @@ const useStyles = createUseStyles({
   },
   middle: {
     animation: '$thruster 0.075s infinite',
-    left: '-18%',
-    bottom: '-110%',
+    left: '-5vw',
+    bottom: '-23vw',
     position: 'absolute',
     backgroundImage: `url(${cdnURL}/rocket/main.png)`,
     backgroundSize: 'contain',
@@ -31,8 +31,8 @@ const useStyles = createUseStyles({
   },
   left: {
     animation: '$thruster 0.05s infinite',
-    left: '-42%',
-    bottom: '-80%',
+    left: '-13vw',
+    bottom: '-16vw',
     position: 'absolute',
     backgroundImage: `url(${cdnURL}/rocket/left.png)`,
     backgroundSize: 'contain',
@@ -44,8 +44,8 @@ const useStyles = createUseStyles({
   },
   right: {
     animation: '$thruster 0.05s infinite',
-    right: '-8%',
-    bottom: '-80%',
+    right: '-2.5vw',
+    bottom: '-16vw',
     position: 'absolute',
     backgroundImage: `url(${cdnURL}/rocket/right.png)`,
     backgroundSize: 'contain',
