@@ -121,8 +121,8 @@ const useStyles = createUseStyles({
     fontFamily: 'Montserrat',
     color: 'white',
     marginTop: '2vw',
-    fontSize: '1.5vw',
-    fontWeight: 600,
+    fontSize: '1rem',
+    fontWeight: 400,
     letterSpacing: '1.3vw',
   },
   '@media (max-width: 992px)': {
