@@ -117,8 +117,8 @@ const useStyles = createUseStyles({
   },
   asteroid: {
     position: 'absolute',
-    left: '-55vw',
-    top: '-20vw',
+    left: '-45vw',
+    top: '100vh',
     width: '100vw',
     pointerEvents: 'none'
   },
@@ -159,6 +159,7 @@ const App = () => {
         <div className={classes.stars} />
         <div className={classes.stars} />
         <div className={classes.stars} />
+        <img src={`${cdnURL}/bg/rocks.png`} alt="asteroid" className={classes.asteroid} />
       </div>
       <div className={classes.contentLayer}>
         <img src={`${cdnURL}/moreinmotion.svg`} alt="samahan" className={classes.samahanLogo} />
@@ -189,7 +190,6 @@ const App = () => {
         </Container>
 
         <Container style={{ marginTop: '15vw', width: '80%', minHeight: '30vw', position: 'relative' }}>
-          <img src={`${cdnURL}/bg/rocks.png`} alt="asteroid" className={classes.asteroid} />
           <Row>
             <Hidden md lg xl xxl>
               <Col sm={4} style={{ position: 'relative' }}>
@@ -213,9 +213,16 @@ const App = () => {
 
         <Container style={{ marginTop: '15vw', width: '80%' }}>
           <Row>
-            <Col sm={4}>
-              <img src={`${cdnURL}/laptop.png`} style={{ pointerEvents: 'none' }} alt="ph" width="100%" />
-            </Col>
+            <Hidden md lg xl xxl>
+              <Col sm={4} style={{ position: 'relative' }}>
+                <img src={`${cdnURL}/laptop.png`} style={{ pointerEvents: 'none' }} alt="ph" width="100%" />
+              </Col>
+            </Hidden>
+            <Visible md lg xl xxl>
+              <Col sm={4} style={{ position: 'relative' }}>
+                <img src={`${cdnURL}/laptop.png`} style={{ position: 'absolute', pointerEvents: 'none', top: '-30%', left: '-35%' }} alt="ph" />
+              </Col>
+            </Visible>
             <Col sm={8}>
               <div className={classes.textContainer}>
                 <h1 style={{ color: 'white' }}>Legislations and Challenges</h1>
@@ -250,10 +257,10 @@ const App = () => {
 
         <Container style={{ marginTop: '15vw', width: '80%' }}>
           <Row>
-            <Col sm={6}>
+            <Col sm={5}>
               <Rocket />
             </Col>
-            <Col sm={6}>
+            <Col sm={7}>
               <h1 style={{ color: 'white' }}>Sign the Petition</h1>
               <FormGroup>
                 <TextField
