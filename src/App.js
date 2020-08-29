@@ -275,14 +275,13 @@ const App = () => {
       if (user) {
         // User is signed in.
         setLoggedIn(true);
+        getCount().then((res) => {
+          setPeopleSigned(res);
+        });
       } else {
         // User is signed out.
         setLoggedIn(false);
       }
-    });
-
-    getCount().then((res) => {
-      setPeopleSigned(res);
     });
   }, [enqueueSnackbar]);
 
