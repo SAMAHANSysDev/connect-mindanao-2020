@@ -153,6 +153,7 @@ const App = () => {
   const [agreePolicy, setAgreePolicy] = React.useState(false);
 
   const [loggedIn, setLoggedIn] = React.useState(false);
+  const [submitting, setSubmitting] = React.useState(false);
 
   const { enqueueSnackbar } = useSnackbar();
 
@@ -192,6 +193,11 @@ const App = () => {
 
   const newSignature = e => {
     e.preventDefault();
+    if (submitting) {
+      return;
+    }
+    
+    setSubmitting(true);
     if (!agreePolicy) {
       enqueueSnackbar('You have yet to agree to our Privacy Policy!', { 
         variant: 'error',
@@ -200,6 +206,7 @@ const App = () => {
           horizontal: 'right',
         },
       });
+      setSubmitting(false);
       return;
     }
     executeRecaptcha("petition").then((token) => {
@@ -213,39 +220,41 @@ const App = () => {
         res.forEach((doc) => {
           exists = true;
         });
-      })
 
-      if (exists) {
-        enqueueSnackbar('You have already signed this petition!', { 
-          variant: 'error',
+        if (exists) {
+          enqueueSnackbar('You have already signed this petition!', { 
+            variant: 'error',
+            anchorOrigin: {
+              vertical: 'top',
+              horizontal: 'right',
+            },
+          });
+          setSubmitting(false);
+          return;
+        }
+  
+        signaturesRef.add({
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          recaptchaToken: token
+        });
+        
+        setFirstName('');
+        setLastName('');
+        setEmail('');
+        setAgreePolicy(false);
+        toTopScroll();
+    
+        enqueueSnackbar('Successfully signed petition! Thank you for supporting this campaign!', { 
+          variant: 'success',
           anchorOrigin: {
             vertical: 'top',
             horizontal: 'right',
           },
         });
-        return;
-      }
-
-      signaturesRef.add({
-        first_name: firstName,
-        last_name: lastName,
-        email: email,
-        recaptchaToken: token
-      });
-      
-      setFirstName('');
-      setLastName('');
-      setEmail('');
-      setAgreePolicy(false);
-      toTopScroll();
-  
-      enqueueSnackbar('Successfully signed petition! Thank you for supporting this campaign!', { 
-        variant: 'success',
-        anchorOrigin: {
-          vertical: 'top',
-          horizontal: 'right',
-        },
-      });
+        setSubmitting(false);
+      })
     }).catch(() => {
       enqueueSnackbar('reCAPTCHA error! If you\'re not a bot, please refresh the page!', { 
         variant: 'error',
@@ -254,6 +263,7 @@ const App = () => {
           horizontal: 'right',
         },
       });
+      setSubmitting(false);
     })
   };
 
