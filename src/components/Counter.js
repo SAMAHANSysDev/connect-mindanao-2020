@@ -37,9 +37,16 @@ const useStyles = createUseStyles({
   }
 });
 
-const Component = ({ className }) => {
+const Component = ({ className, count: parent }) => {
+  const [count, setCount] = React.useState(parent);
+  const { countUp, update } = useCountUp({ start: 0, end: count, separator: ',', useEasing: true, duration: 4 });
+
+  React.useEffect(() => {
+    setCount(parent);
+    update(count);
+  }, [parent, count, update]);
+
   const classes = useStyles();
-  const { countUp } = useCountUp({ start: 0, end: 192168254, separator: ',', useEasing: true, duration: 4 });
 
   return (
     <div className={className}>

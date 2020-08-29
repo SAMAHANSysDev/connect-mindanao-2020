@@ -20,6 +20,7 @@ const useStyles = createUseStyles({
     backgroundRepeat: 'no-repeat',
     width: '120%',
     height: '200%',
+    zIndex: '-1'
   },
   satellite: {
     left: '-70%',
@@ -31,6 +32,7 @@ const useStyles = createUseStyles({
     backgroundRepeat: 'no-repeat',
     width: '120%',
     height: '200%',
+    zIndex: '-1'
   },
   origin: {
     animation: '$signal1 1s infinite',

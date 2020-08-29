@@ -20,6 +20,13 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 import { cdnURL } from './utils/constants';
+import firebase from './utils/firebase';
+
+import { useSnackbar } from 'notistack';
+
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+
+const db = firebase.firestore();
 
 const useStyles = createUseStyles({
   app: {
@@ -133,14 +140,37 @@ const useStyles = createUseStyles({
 
 const scrollToRef = (ref) => ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
+
 const App = () => {
 
   const [openPrivacyPolicy, setOpenPrivacyPolicy] = React.useState(false);
+  const [peopleSigned, setPeopleSigned] = React.useState(0);
+
+  const [firstName, setFirstName] = React.useState('');
+  const [lastName, setLastName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+
+  const [agreePolicy, setAgreePolicy] = React.useState(false);
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleOpenPrivacy = (e) => {
     e.preventDefault();
     setOpenPrivacyPolicy(true);
   };
+
+  const getCount = () => {
+    return new Promise((resolve, reject) => {
+      db.collection('constants').doc('count')
+      .onSnapshot((snapshot) => {
+        let updatedData = snapshot.data().signature
+        setPeopleSigned(updatedData);
+        resolve(updatedData);
+      }, reject)
+    })
+  }
 
   const handleClosePrivacy = () => {
     setOpenPrivacyPolicy(false);
@@ -151,6 +181,65 @@ const App = () => {
   const executeScroll = () => {
     scrollToRef(firstInfoRef);
   };
+
+  const topRef = React.useRef(null);
+  const toTopScroll = () => {
+    scrollToRef(topRef);
+  };
+
+
+  const newSignature = e => {
+    e.preventDefault();
+    if (!agreePolicy) {
+      enqueueSnackbar('You have yet to agree to our Privacy Policy!', { 
+        variant: 'error',
+        anchorOrigin: {
+          vertical: 'top',
+          horizontal: 'right',
+        },
+      });
+      return;
+    }
+    executeRecaptcha("petition").then((token) => {
+      console.log(token)
+      db.collection('constants').doc('count').update({
+        signature: firebase.firestore.FieldValue.increment(1)
+      });
+      db.collection('signatures').add({
+        first_name: firstName,
+        last_name: lastName,
+        email: email
+      });
+      
+      setFirstName('');
+      setLastName('');
+      setEmail('');
+      setAgreePolicy(false);
+      toTopScroll();
+  
+      enqueueSnackbar('Successfully signed petition! Thank you for supporting this campaign!', { 
+        variant: 'success',
+        anchorOrigin: {
+          vertical: 'top',
+          horizontal: 'right',
+        },
+      });
+    }).catch((err) => {
+      enqueueSnackbar(err, { 
+        variant: 'error',
+        anchorOrigin: {
+          vertical: 'top',
+          horizontal: 'right',
+        },
+      });
+    })
+  };
+
+  React.useEffect(() => {
+    getCount().then((res) => {
+      setPeopleSigned(res);
+    });
+  }, []);
 
   return (
     <div className={classes.app}>
@@ -164,7 +253,8 @@ const App = () => {
       <div className={classes.contentLayer}>
         <img src={`${cdnURL}/moreinmotion.svg`} alt="samahan" className={classes.samahanLogo} />
         <div className={classes.spacing} />
-        <Counter className={classes.counter} />
+        <div ref={topRef} />
+        <Counter className={classes.counter} count={peopleSigned} />
         <ConnectMindanao className={classes.centerAlign} />
         <Button className={classes.button} onClick={executeScroll}>Learn more</Button>
         <Visible md lg xl xxl>
@@ -269,29 +359,37 @@ const App = () => {
             </Visible>
             <Col sm={7}>
               <h1 style={{ color: 'white' }}>Sign the Petition</h1>
-              <FormGroup>
-                <TextField
-                  label="First Name"
-                  fullWidth
-                />
-                <TextField
-                  label="Last Name"
-                  fullWidth
-                />
-                <TextField
-                  label="Email"
-                  fullWidth
-                />
-                <br />
-                <a onClick={handleOpenPrivacy} href="/">Privacy Policy</a>
-                <FormControlLabel
-                  control={
-                    <Checkbox onChange={() => {}} name="checkedG" />
-                  }
-                  label="I have read and agree to the Privacy Policy."
-                />
-                <Button style={{ marginTop: '1.5vw' }} fullWidth>Sign Petition</Button>
-              </FormGroup>
+              <form onSubmit={newSignature}>
+                <FormGroup>
+                  <TextField
+                    value={firstName}
+                    label="First Name"
+                    onChange={e => setFirstName(e.target.value)}
+                    fullWidth
+                  />
+                  <TextField
+                    value={lastName}
+                    label="Last Name"
+                    onChange={e => setLastName(e.target.value)}
+                    fullWidth
+                  />
+                  <TextField
+                    value={email}
+                    label="Email"
+                    onChange={e => setEmail(e.target.value)}
+                    fullWidth
+                  />
+                  <br />
+                  <a onClick={handleOpenPrivacy} href="/">Privacy Policy</a>
+                  <FormControlLabel
+                    control={
+                      <Checkbox checked={agreePolicy} onChange={(e) => { setAgreePolicy(e.target.checked); console.log(e.target.checked) }} />
+                    }
+                    label="I have read and agree to the Privacy Policy."
+                  />
+                  <Button type="submit" style={{ marginTop: '1.5vw' }} fullWidth>Sign Petition</Button>
+                </FormGroup>
+              </form>
             </Col>
           </Row>
         </Container>

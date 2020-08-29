@@ -65,9 +65,9 @@ const Component = (props) => {
   return (
     <div className={props.className} style={props.style}>
       { props.fullWidth ? 
-        <button className={classes.button} style={{ width: '100%', padding: 20 }} onClick={props.onClick}>{props.children}</button>
+        <button className={classes.button} style={{ width: '100%', padding: 20 }} onClick={props.onClick} type={props.type}>{props.children}</button>
       :
-        <button className={classes.button} onClick={props.onClick}>{props.children}</button>
+        <button className={classes.button} onClick={props.onClick} type={props.type}>{props.children}</button>
       }
     </div>
   );
