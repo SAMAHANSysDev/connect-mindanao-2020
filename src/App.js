@@ -201,14 +201,34 @@ const App = () => {
       return;
     }
     executeRecaptcha("petition").then((token) => {
-      console.log(token)
       db.collection('constants').doc('count').update({
         signature: firebase.firestore.FieldValue.increment(1)
       });
-      db.collection('signatures').add({
+
+      const signaturesRef = db.collection('signatures');
+      let exists = false;
+      signaturesRef.where("email", "==", email).get().then((res) => {
+        res.forEach((doc) => {
+          exists = true;
+        });
+      })
+
+      if (exists) {
+        enqueueSnackbar('You have already signed this petition!', { 
+          variant: 'error',
+          anchorOrigin: {
+            vertical: 'top',
+            horizontal: 'right',
+          },
+        });
+        return;
+      }
+
+      signaturesRef.add({
         first_name: firstName,
         last_name: lastName,
-        email: email
+        email: email,
+        recaptchaToken: token
       });
       
       setFirstName('');
@@ -224,8 +244,8 @@ const App = () => {
           horizontal: 'right',
         },
       });
-    }).catch((err) => {
-      enqueueSnackbar(err, { 
+    }).catch(() => {
+      enqueueSnackbar('reCAPTCHA error! If you\'re not a bot, please refresh the page!', { 
         variant: 'error',
         anchorOrigin: {
           vertical: 'top',
@@ -383,7 +403,7 @@ const App = () => {
                   <a onClick={handleOpenPrivacy} href="/">Privacy Policy</a>
                   <FormControlLabel
                     control={
-                      <Checkbox checked={agreePolicy} onChange={(e) => { setAgreePolicy(e.target.checked); console.log(e.target.checked) }} />
+                      <Checkbox checked={agreePolicy} onChange={(e) => { setAgreePolicy(e.target.checked) }} />
                     }
                     label="I have read and agree to the Privacy Policy."
                   />
