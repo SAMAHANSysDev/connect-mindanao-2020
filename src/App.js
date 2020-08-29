@@ -140,6 +140,9 @@ const useStyles = createUseStyles({
 
 const scrollToRef = (ref) => ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
+const validateEmail = (mail) => {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)
+}
 
 const App = () => {
 
@@ -196,7 +199,7 @@ const App = () => {
     if (submitting) {
       return;
     }
-    
+
     setSubmitting(true);
     if (!agreePolicy) {
       enqueueSnackbar('You have yet to agree to our Privacy Policy!', { 
@@ -210,10 +213,6 @@ const App = () => {
       return;
     }
     executeRecaptcha("petition").then((token) => {
-      db.collection('constants').doc('count').update({
-        signature: firebase.firestore.FieldValue.increment(1)
-      });
-
       const signaturesRef = db.collection('signatures');
       let exists = false;
       signaturesRef.where("email", "==", email).get().then((res) => {
@@ -232,6 +231,22 @@ const App = () => {
           setSubmitting(false);
           return;
         }
+
+        if (!validateEmail(email)) {
+          enqueueSnackbar('Invalid email address!', { 
+            variant: 'error',
+            anchorOrigin: {
+              vertical: 'top',
+              horizontal: 'right',
+            },
+          });
+          setSubmitting(false);
+          return;
+        }
+
+        db.collection('constants').doc('count').update({
+          signature: firebase.firestore.FieldValue.increment(1)
+        });
   
         signaturesRef.add({
           first_name: firstName,
