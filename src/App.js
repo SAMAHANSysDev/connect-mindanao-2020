@@ -212,6 +212,19 @@ const App = () => {
       setSubmitting(false);
       return;
     }
+
+    if (!firstName || !lastName || !email) {
+      enqueueSnackbar('All fields are required!', { 
+        variant: 'error',
+        anchorOrigin: {
+          vertical: 'top',
+          horizontal: 'right',
+        },
+      });
+      setSubmitting(false);
+      return;
+    }
+    
     executeRecaptcha("petition").then((token) => {
       const signaturesRef = db.collection('signatures');
       let exists = false;
