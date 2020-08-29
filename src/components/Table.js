@@ -175,9 +175,9 @@ export default function CustomPaginationActionsTable({ rows, style }) {
         <Table className={classes.table} aria-label="custom pagination table">
           <TableHead>
             <TableRow>
+              <TableCell>Email</TableCell>
               <TableCell>First Name</TableCell>
               <TableCell>Last Name</TableCell>
-              <TableCell>Email</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
