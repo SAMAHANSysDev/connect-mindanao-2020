@@ -13,6 +13,8 @@ import firebase from './utils/firebase';
 
 import { useSnackbar } from 'notistack';
 
+import md5 from 'md5';
+
 const db = firebase.firestore();
 
 const useStyles = createUseStyles({
@@ -144,7 +146,7 @@ const App = () => {
       return;
     }
 
-    if (password === 'AdDUSamahanConnMin202O') {
+    if (md5(password) === 'cd9b511b243ee5056b13f545e534525e') {
       setValidPassword(true);
       enqueueSnackbar('Admin login successful!', { 
         variant: 'success',
