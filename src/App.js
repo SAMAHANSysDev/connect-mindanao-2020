@@ -152,6 +152,8 @@ const App = () => {
 
   const [agreePolicy, setAgreePolicy] = React.useState(false);
 
+  const [loggedIn, setLoggedIn] = React.useState(false);
+
   const { enqueueSnackbar } = useSnackbar();
 
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -256,10 +258,33 @@ const App = () => {
   };
 
   React.useEffect(() => {
+    firebase.auth().signInAnonymously().catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      enqueueSnackbar(`Database error! ${errorMessage} (${errorCode})`, { 
+        variant: 'error',
+        anchorOrigin: {
+          vertical: 'top',
+          horizontal: 'right',
+        },
+      });
+    });
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        setLoggedIn(true);
+      } else {
+        // User is signed out.
+        setLoggedIn(false);
+      }
+    });
+
     getCount().then((res) => {
       setPeopleSigned(res);
     });
-  }, []);
+  }, [enqueueSnackbar]);
 
   return (
     <div className={classes.app}>
@@ -379,37 +404,41 @@ const App = () => {
             </Visible>
             <Col sm={7}>
               <h1 style={{ color: 'white' }}>Sign the Petition</h1>
-              <form onSubmit={newSignature}>
-                <FormGroup>
-                  <TextField
-                    value={firstName}
-                    label="First Name"
-                    onChange={e => setFirstName(e.target.value)}
-                    fullWidth
-                  />
-                  <TextField
-                    value={lastName}
-                    label="Last Name"
-                    onChange={e => setLastName(e.target.value)}
-                    fullWidth
-                  />
-                  <TextField
-                    value={email}
-                    label="Email"
-                    onChange={e => setEmail(e.target.value)}
-                    fullWidth
-                  />
-                  <br />
-                  <a onClick={handleOpenPrivacy} href="/">Privacy Policy</a>
-                  <FormControlLabel
-                    control={
-                      <Checkbox checked={agreePolicy} onChange={(e) => { setAgreePolicy(e.target.checked) }} />
-                    }
-                    label="I have read and agree to the Privacy Policy."
-                  />
-                  <Button type="submit" style={{ marginTop: '1.5vw' }} fullWidth>Sign Petition</Button>
-                </FormGroup>
-              </form>
+              { loggedIn ?
+                <form onSubmit={newSignature}>
+                  <FormGroup>
+                    <TextField
+                      value={firstName}
+                      label="First Name"
+                      onChange={e => setFirstName(e.target.value)}
+                      fullWidth
+                    />
+                    <TextField
+                      value={lastName}
+                      label="Last Name"
+                      onChange={e => setLastName(e.target.value)}
+                      fullWidth
+                    />
+                    <TextField
+                      value={email}
+                      label="Email"
+                      onChange={e => setEmail(e.target.value)}
+                      fullWidth
+                    />
+                    <br />
+                    <a onClick={handleOpenPrivacy} href="/">Privacy Policy</a>
+                    <FormControlLabel
+                      control={
+                        <Checkbox checked={agreePolicy} onChange={(e) => { setAgreePolicy(e.target.checked) }} />
+                      }
+                      label="I have read and agree to the Privacy Policy."
+                    />
+                    <Button type="submit" style={{ marginTop: '1.5vw' }} fullWidth>Sign Petition</Button>
+                  </FormGroup>
+                </form>
+              :
+                <p>Error occured while trying to connect to the database! Please reload website!</p>
+              }
             </Col>
           </Row>
         </Container>
