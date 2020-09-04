@@ -353,7 +353,7 @@ const App = () => {
             <Col sm={8}>
               <div ref={firstInfoRef} />
               <div className={classes.textContainer}>
-                <h1 style={{ color: 'white' }}>The Philipine Internet Situation</h1>
+                <h1 style={{ color: 'white' }}>The Philippine Internet Situation</h1>
                 <p>Recent global speed tests showed that the Philippines has a fixed broadband download speed of <b>25.07</b> Megabits per second (Mbps), which is way lower than the global average of <b>81.46</b> Mbps. The Philippines also has a lower mobile download speed of <b>16.95</b> Mbps, compared to the global average of <b>34.51</b> Mbps</p>
                 <SmallButton className={classes.readMoreButton} onClick={() => { window.open('/documents/The%20Philippine%20Internet%20Situation.pdf', '_blank'); }} fullWidth>Read more</SmallButton>
               </div>
