@@ -1,1 +1,1 @@
-export const cdnURL = 'https://connectmindanao.imfast.io';
+export const cdnURL = "https://samahan-sites.stdcdn.com/connect-mindanao";
